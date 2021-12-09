@@ -1,4 +1,4 @@
-function alpha = bisezione2(f, a, b, tol)
+function alpha = bisezione(f, a, b, tol)
     k = log2((b-a)/tol);
     
     if f(a)*f(b) > 0 
