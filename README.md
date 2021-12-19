@@ -1,10 +1,7 @@
 # MATLAB
 Some functions made by me during the course of Scientific Computing 2021/2022
 - Non linear equations
-  - Bisection
-  - Newton
-  - Secants 
-  - Fixed point
+  - Bisection, Newton, Secants, Fixed point
 - Interpolation
   - Vandermonde
   - Lagrange
