@@ -1,24 +1,13 @@
-# MATLAB
+# List of function - Scientific Computing 
 Some functions made by me during the course of Scientific Computing 2021/2022
 - Non linear equations
   - Bisection, Newton, Secants, Fixed point
 - Interpolation
-  - Vandermonde
-  - Lagrange
-  - Spline
-    - Natural 
-    - "Vincolata"
-    - Not-a-knot 
+  - Vandermonde, Lagrange, Cubic spline, Least square
 - Integration
-  - Trapezium rule
+  - Trapezium rule [x]
 - Linear sistem 
-  - Conditioning
-  - Back-forward substitution
-  - MEG
-  - LU factorization
-  - Sparse matrix
-  - ...
+  - Direct: Foreward/Backward substitution, LU factorization, PLU factorization, Inverse
+  - Iterative: Jacobi, Gauss-Seidel
 - ODE & PDE 
-  - Poisson
-  - Euler method
-  - Theta method         
+  - Poisson, Euler method, Theta method [x]  
