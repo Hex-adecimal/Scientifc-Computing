@@ -1,7 +1,9 @@
 function [t, y] = myEuler(fname, y0, t0, T, N)
-    % .
+    % Questa funzione implementa il metodo di Eulero per la ricerca di una
+    % soluzione ad un equazione differenziale
     %
-    % .
+    % Perchè la soluzione sia unica, allora fname deve essere continua e
+    % Lipschitziana rispetto a y in D
     %
     % INPUT
     %   fname : La funzione f(t, y(t))
