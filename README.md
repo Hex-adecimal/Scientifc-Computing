@@ -8,6 +8,6 @@ Some functions made by me during the course of Scientific Computing 2021/2022
     - Trapezium rule [x]
 4. Linear sistem 
     - Direct: Foreward/Backward substitution, LU factorization, PLU factorization, Inverse
-    - Iterative: Jacobi, Gauss-Seidel
+    - Iterative: Jacobi, Gauss-Seidel, Gradient
 5. ODE & PDE 
     - Poisson, Euler method, Theta method [x]  
