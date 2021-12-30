@@ -7,8 +7,8 @@ function [x,ierr]=myNewton(f,fp,x0,tol,Kmax)
     % nell'intervallo per ogni x0 in [alpha-delta, alpha+delta] il metodo
     % converge. 
     %
-    % Inoltre se la funzione in alpha è nulla, sappiamo che la convegenza
-    % di questo metodo è quadratica. 
+    % Inoltre se la derivata della funzione in alpha è nulla, sappiamo che 
+    % la convegenza di questo metodo è almeno quadratica. 
     %
     % INPUT
     %   f     : La funzione di cui vogliamo la radice
@@ -40,23 +40,22 @@ function [x,ierr]=myNewton(f,fp,x0,tol,Kmax)
     % Eseguo il primo passo fuori dal while
     x = x0 - f(x0)/fp(x0);
     err = abs((x - x0)/x);
-    prevx = x0;
     
     k=1; 
     while k<Kmax && err>tol
-       % Eseguo un passo della successione
-       x = x - f(x)/fp(x);
+        % Eseguo un passo della successione
+        prevx = x;
+        x = x - f(x)/fp(x);
        
-       % Calcolo l'errore e aggiorno l'x del passo precedente
-       err = abs((x - prevx)/x); 
-       prevx = x;
+        % Calcolo l'errore
+        err = abs((x - prevx)/x);
         
-       % Incremento l'indice
-       k=k+1;
+        % Incremento l'indice
+        k=k+1;
     end
-    
+        
     if err<tol
-           ierr=0;
+        ierr=0;
     end
     
     fprintf('Convergenza in %f dopo %d passi, con un errore di %f',x, k, err);

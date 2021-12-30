@@ -33,25 +33,19 @@ function [x, ierr] = myFixedPoint(g, x0, tol, Kmax)
         Kmax=20;
     end
     
-    % Eseguo il primo passo fuori dal while
-    x = g(x0);
-    err = abs((x - x0)/x);
-    prevx = x0;
+    x = x0; prevx = x0;
     
     k=1;
     while k<Kmax
         % Calcolo un passo della successione
         x = g(x); 
         
-        % Calcolo l'errore
         err = abs((x - prevx)/x);
         prevx = x;
-        % Se l'errore è minore della tolleranza esco dal ciclo
         if err<tol
             ierr=0;
             break
         end
-        % Incremento l'indice
         k=k+1;
     end
     
