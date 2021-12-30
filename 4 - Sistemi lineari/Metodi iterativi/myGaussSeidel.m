@@ -32,8 +32,9 @@ function [x, ierr] = myGaussSeidel(a, r, c, b, x0, Kmax, tol)
     end
     
     % Creo la matrice sparsa
-    A = sparse(r, c, a);  %max(eigs(A)) % Per il raggio spettrale
+    A = sparse(r, c, a);  % max(eigs(A)) % Per il raggio spettrale
     b = sparse(b);
+    L = sparse(-tril(A, -1)); U = sparse(-tril(A, 1)); D = sparse(diag(diag(A)));
     
     n = length(A); x = zeros(n, 1); ierr = -1;
     px = x0;
@@ -41,11 +42,14 @@ function [x, ierr] = myGaussSeidel(a, r, c, b, x0, Kmax, tol)
     k=1;
     while k<Kmax
         % Eseguo un passo della successione
-        for i = 1:n
-            j = 1:i-1; jj = i+1:n;
-            x(i) = (b(i) - sum(A(i, j)*x(j)) - sum(A(i, jj)*px(jj))) / A(i, i);
-        end
-        A
+        x = (D-L)\(U*px) + (D-L)\b;
+        
+        % Versione per matrici non sparse (non sfrutta la sparsità)
+%         for i = 1:n
+%             j = 1:i-1; jj = i+1:n;
+%             x(i) = (b(i) - sum(A(i, j)*x(j)) - sum(A(i, jj)*px(jj))) / A(i, i);
+%         end
+        
         % Controllo se ho soddisfatto la tolleranza
         if norm(x - px, "inf")/norm(x, "inf") < tol
            ierr = 0;
@@ -53,5 +57,4 @@ function [x, ierr] = myGaussSeidel(a, r, c, b, x0, Kmax, tol)
         end
         px = x; k=k+1;
     end
-    k
 end
